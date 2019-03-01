@@ -1,11 +1,12 @@
 const Product = require('./../models/Product')
+const Test = require('./../models/test')
+console.log("------------------Start------------------");
 
 exports.getAll = function(req, res) {
-
-    console.log();
-
-    Product.findAll().then((response) => {
-        res.json(res.h.setSuccessResponse(true, 'Get Products !', response));
+    Test.findAll(Test.fillable()).then((response) => {       
+        Test.transformCollection(response).then(data => {
+            res.json(res.h.setSuccessResponse(true, 'Get Products !', data));       
+        });
     }).catch((err) => {
         res.json({
             status: false,
@@ -14,6 +15,8 @@ exports.getAll = function(req, res) {
         });
     });
 };
+console.log("------------------END------------------");
+
 
 exports.getById = function(req, res) {
 

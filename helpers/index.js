@@ -4,6 +4,6 @@ exports.setSuccessResponse = function(status, message, response, key = 'items')
         status:         status,
         statusCode:     200,
         message:        message,
-        [key]:            response
+        [key]:          response
     };
 }
